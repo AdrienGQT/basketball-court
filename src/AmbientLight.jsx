@@ -9,7 +9,7 @@ export default function AmbientLight() {
                 max: 25,
                 step: 0.01,
             },
-            color: "#e5be38",
+            color: "#ffffffff",
         }),
     });
     return (

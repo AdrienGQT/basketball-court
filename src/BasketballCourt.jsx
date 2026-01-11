@@ -9,16 +9,23 @@ export default function BasketballCourt() {
     const model = useGLTF("./model/basketball_court.glb");
     const [groundMesh, setGroundMesh] = useState(null);
     const [groundSize, setGroundSize] = useState(null);
-
+    
     const materialMap = {
-        ground: new THREE.MeshStandardMaterial({ color: "#321a14" }),
-        groundClearer: new THREE.MeshStandardMaterial({ color: "#5b2d20" }),
-        courtLinesBasket: new THREE.MeshStandardMaterial({ color: "white" }),
-        courtLinesCenter: new THREE.MeshStandardMaterial({ color: "white" }),
-        wall1: new THREE.MeshStandardMaterial({ color: "#28875f" }),
-        wall2: new THREE.MeshStandardMaterial({ color: "#28875f" }),
+        ground: new THREE.MeshBasicMaterial({ color: "#281a10" }),
+        groundClearer: new THREE.MeshBasicMaterial({ color: "#c75c05" }),
+        courtLinesBasket: new THREE.MeshBasicMaterial({ color: "#cacaca" }),
+        courtLinesCenter: new THREE.MeshBasicMaterial({ color: "#cacaca" }),
+        wall1: new THREE.MeshStandardMaterial({ color: "#265736" }),
+        wall2: new THREE.MeshStandardMaterial({ color: "#265736" }),
         ceiling: new THREE.MeshStandardMaterial({ color: "#949494" }),
-        ball: new THREE.MeshStandardMaterial({color: '#c9542d'})
+        ball: new THREE.MeshStandardMaterial({color: '#c9542d'}),
+        door1: new THREE.MeshStandardMaterial({ color: "#281a10" }),
+        door2: new THREE.MeshStandardMaterial({ color: "#281a10" }),
+        basketPannelBase: new THREE.MeshStandardMaterial({color: '#b37e94'}),
+        basketPannelPaintCenter: new THREE.MeshStandardMaterial({ color: "#4f1818" }),
+        basketPannelPaintBorder: new THREE.MeshStandardMaterial({ color: "#4f1818" }),
+        basketBase: new THREE.MeshStandardMaterial({ color: "#4f1818"}),
+        basketNet : new THREE.MeshStandardMaterial({ color: "#e1e1e1"})
     };
 
     useEffect(() => {
@@ -33,12 +40,15 @@ export default function BasketballCourt() {
                     bbox.getSize(size);
 
                     setGroundSize(size);
-
-                    console.log(groundSize);
                 }
                 child.material =
                     materialMap[child.name] ||
                     new THREE.MeshBasicMaterial({ color: "purple" });
+                child.castShadow = true
+                child.receiveShadow = true
+                if(child.name ==="basketPannelBase"){
+                    console.log(child)
+                }
             }
         });
     }, [model]);

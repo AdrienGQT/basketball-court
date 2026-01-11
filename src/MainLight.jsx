@@ -8,7 +8,7 @@ export default function MainLight() {
     const targetRef = useRef();
 
     const textureLoader = new THREE.TextureLoader();
-    const map = textureLoader.load("./gobo/gobo.jpg");
+    const map = textureLoader.load("./gobo/gobo5.jpg");
 
     const {
         color,
@@ -22,7 +22,7 @@ export default function MainLight() {
         gizmoMode,
     } = useControls("Lights", {
         SpotLight: folder({
-            color: "#ffffff",
+            color: "#ffb413",
             position: {
                 value: {
                     x: 140,
@@ -46,7 +46,7 @@ export default function MainLight() {
                 step: 0.01,
             },
             intensity: {
-                value: 15,
+                value: 35,
                 min: 1,
                 max: 50,
                 step: 0.1,
@@ -98,7 +98,7 @@ export default function MainLight() {
                 penumbra={penumbra}
                 decay={decay}
                 map={map}
-                mapSize={[2048, 2048]}
+                mapSize={[1024, 1024]}
             />
 
             <object3D

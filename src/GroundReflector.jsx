@@ -13,7 +13,7 @@ export default function GroundReflector({ groundMesh, groundSize }) {
         opacity,
     } = useControls("Ground", {
         GroundReflection: folder({
-            color: "#373737",
+            color: "#281a10",
             blurWidth: {
                 value: 300,
                 min: 0,
@@ -27,7 +27,7 @@ export default function GroundReflector({ groundMesh, groundSize }) {
                 step: 10,
             },
             roughness: {
-                value: 0.2,
+                value: 0.77,
                 min: 0,
                 max: 1,
                 step: 0.01,
@@ -39,19 +39,19 @@ export default function GroundReflector({ groundMesh, groundSize }) {
                 step: 0.01,
             },
             mixStrength: {
-                value: 50,
+                value: 100,
                 min: 0,
                 max: 100,
                 step: 0.1,
             },
             mirror: {
-                value: 0.5,
+                value: 1,
                 min: 0,
                 max: 1,
                 step: 0.01,
             },
             opacity: {
-                value: 0.2,
+                value: 0.25,
                 min: 0,
                 max: 1,
                 step: 0.01,
@@ -68,10 +68,25 @@ export default function GroundReflector({ groundMesh, groundSize }) {
                 mixBlur={mixBlur}
                 mixStrength={mixStrength}
                 mirror={mirror}
+                depthScale={1.2}
+                minDepthThreshold={0.4}
+                maxDepthThreshold={1.4}
+                resolution={2048}
                 opacity={opacity}
-                resolution={1024}
                 transparent={true}
             />
+            {/* <MeshReflectorMaterial
+                blur={[300, 100]}
+                resolution={2048}
+                mixBlur={1}
+                mixStrength={80}
+                roughness={1}
+                depthScale={1.2}
+                minDepthThreshold={0.4}
+                maxDepthThreshold={1.4}
+                color="#050505"
+                metalness={0.5}
+            /> */}
         </mesh>
     );
 }
