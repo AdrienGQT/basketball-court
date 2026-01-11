@@ -11,9 +11,10 @@ root.render(
             fov: 45,
             near: 0.1,
             far: 100,
-            position: [9, 2, 3.3],
+            position: [9, 2, -4],
         }}
-    >
+    >   
+    <color args={['#2c3b5f']} attach="background" />
         <App />
     </Canvas>
 );

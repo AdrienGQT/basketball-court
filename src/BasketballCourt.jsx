@@ -18,6 +18,7 @@ export default function BasketballCourt() {
         wall1: new THREE.MeshStandardMaterial({ color: "#28875f" }),
         wall2: new THREE.MeshStandardMaterial({ color: "#28875f" }),
         ceiling: new THREE.MeshStandardMaterial({ color: "#949494" }),
+        ball: new THREE.MeshStandardMaterial({color: '#c9542d'})
     };
 
     useEffect(() => {
