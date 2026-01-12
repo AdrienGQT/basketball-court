@@ -8,16 +8,19 @@ export default function MainLight() {
     const targetRef = useRef();
 
     const textureLoader = new THREE.TextureLoader();
-    const map = textureLoader.load("./gobo/gobo5.jpg");
+    const map = textureLoader.load("./gobo/gobo.jpg");
 
     const {
         color,
         position,
         targetPosition,
+        distance,
         angle,
         intensity,
         penumbra,
         decay,
+        shadowCameraNear,
+        shadowCameraFar,
         showGizmo,
         gizmoMode,
     } = useControls("Lights", {
@@ -35,9 +38,15 @@ export default function MainLight() {
                 value: {
                     x: 0.2,
                     y: 3,
-                    z: -8.2,
+                    z: -7.9,
                 },
                 step: 0.1,
+            },
+            distance: {
+                value: 400,
+                min: 1,
+                max: 1000,
+                step: 0.1
             },
             angle: {
                 value: 0.05,
@@ -46,7 +55,7 @@ export default function MainLight() {
                 step: 0.01,
             },
             intensity: {
-                value: 35,
+                value: 45,
                 min: 1,
                 max: 50,
                 step: 0.1,
@@ -62,6 +71,18 @@ export default function MainLight() {
                 min: 0,
                 max: 2,
                 step: 0.01,
+            },
+            shadowCameraNear: {
+                value: 1,
+                min: 1,
+                max: 5,
+                step: 1
+            },
+            shadowCameraFar: {
+                value: 3,
+                min: 1,
+                max: 2000,
+                step: 1
             },
             showGizmo: true,
             gizmoMode: {
@@ -91,6 +112,7 @@ export default function MainLight() {
         <>
             <spotLight
                 ref={lightRef}
+                distance={distance}
                 color={color}
                 intensity={intensity}
                 position={[position.x, position.y, position.z]}
@@ -99,6 +121,10 @@ export default function MainLight() {
                 decay={decay}
                 map={map}
                 mapSize={[1024, 1024]}
+                castShadow={true}
+                shadow-mapSize={[1024, 1024]}
+                shadow-camera-near={shadowCameraNear}
+                shadow-camera-far={shadowCameraFar}
             />
 
             <object3D
