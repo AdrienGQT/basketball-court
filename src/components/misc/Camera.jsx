@@ -1,6 +1,7 @@
 import { PerspectiveCamera } from "@react-three/drei";
 import { useControls } from "leva";
 import { useRef, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 export default function Camera() {
@@ -39,6 +40,10 @@ export default function Camera() {
             );
         }
     }, [targetPosition]);
+
+    useFrame(() => {
+        
+    })
 
     return (
         <>

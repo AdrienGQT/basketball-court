@@ -16,7 +16,7 @@ export default function App() {
     return (
         <>  
             <Camera />
-            {/* <OrbitControls target={new THREE.Vector3(-1, 1, -10)} /> */}
+            <OrbitControls target={new THREE.Vector3(-1, 1, -10)} />
 
             {/* Model court */}
             <BasketballCourt />
@@ -27,15 +27,6 @@ export default function App() {
             <MainLight />
 
             <BakeShadows />
-
-            <EffectComposer>
-                <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-                {/* <Bloom
-                    intensity={1.0}
-                    luminanceThreshold={0.8}
-                    luminanceSmoothing={0.1}
-                /> */}
-            </EffectComposer>
         </>
     );
 }

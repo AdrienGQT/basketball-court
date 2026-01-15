@@ -1,7 +1,7 @@
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { folder, useControls } from "leva";
 
-export default function GroundReflector({ groundMesh, groundSize }) {
+export default function GroundReflector({ groundMesh, groundSize, groundPosition }) {
     const {
         color,
         blurWidth,
@@ -15,13 +15,13 @@ export default function GroundReflector({ groundMesh, groundSize }) {
         GroundReflection: folder({
             color: "#281a10",
             blurWidth: {
-                value: 300,
+                value: 100,
                 min: 0,
                 max: 500,
                 step: 10,
             },
             blurHeight: {
-                value: 100,
+                value: 50,
                 min: 0,
                 max: 500,
                 step: 10,
@@ -39,13 +39,13 @@ export default function GroundReflector({ groundMesh, groundSize }) {
                 step: 0.01,
             },
             mixStrength: {
-                value: 100,
+                value: 60,
                 min: 0,
                 max: 100,
                 step: 0.1,
             },
             mirror: {
-                value: 1,
+                value: 0,
                 min: 0,
                 max: 1,
                 step: 0.01,
@@ -59,7 +59,7 @@ export default function GroundReflector({ groundMesh, groundSize }) {
         }),
     });
     return (
-        <mesh rotation={[Math.PI * -0.5, 0, 0]} position={[0, 0.03, 0]}>
+        <mesh rotation={[Math.PI * -0.5, 0, 0]} position={[groundPosition.x, groundPosition.y + 0.027, groundPosition.z]}>
             <planeGeometry args={[groundSize.x, groundSize.z]} />
             <MeshReflectorMaterial
                 color={color}
@@ -71,22 +71,10 @@ export default function GroundReflector({ groundMesh, groundSize }) {
                 depthScale={1.2}
                 minDepthThreshold={0.4}
                 maxDepthThreshold={1.4}
-                resolution={2048}
+                resolution={512}
                 opacity={opacity}
                 transparent={true}
             />
-            {/* <MeshReflectorMaterial
-                blur={[300, 100]}
-                resolution={2048}
-                mixBlur={1}
-                mixStrength={80}
-                roughness={1}
-                depthScale={1.2}
-                minDepthThreshold={0.4}
-                maxDepthThreshold={1.4}
-                color="#050505"
-                metalness={0.5}
-            /> */}
         </mesh>
     );
 }

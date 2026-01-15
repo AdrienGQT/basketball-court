@@ -3,14 +3,16 @@ import { createRoot } from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import App from "./App.jsx";
 import { Perf } from "r3f-perf";
+import * as THREE from 'three';
 
 const root = createRoot(document.getElementById("root"));
 
 root.render(
     <Canvas
         shadows
-        onPointerMove={(e) => {
-            console.log(e);
+        onCreated={({ gl }) => {
+            gl.toneMapping = THREE. NeutralToneMapping;
+            gl.toneMappingExposure = 1.5;
         }}
     >
         <color args={["#2c3b5f"]} attach="background" />
