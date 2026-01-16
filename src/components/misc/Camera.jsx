@@ -50,7 +50,7 @@ export default function Camera() {
         onXSensitivity: 0.3,
         onYSensitivity: 0.4,
         onZSensitivity: -0.7,
-        lerpFactor: 0.03,
+        lerpFactor: 0.02,
     });
 
     return (

@@ -57,7 +57,7 @@ export default function GroundReflector({
                     step: 0.01,
                 },
                 opacity: {
-                    value: 0.25,
+                    value: 0.3,
                     min: 0,
                     max: 1,
                     step: 0.01,
@@ -86,7 +86,7 @@ export default function GroundReflector({
                 depthScale={1.2}
                 minDepthThreshold={0.4}
                 maxDepthThreshold={1.4}
-                resolution={512}
+                resolution={1024}
                 opacity={opacity}
                 transparent={true}
             />
