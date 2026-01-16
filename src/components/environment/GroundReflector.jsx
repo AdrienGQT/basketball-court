@@ -1,7 +1,11 @@
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { folder, useControls } from "leva";
 
-export default function GroundReflector({ groundMesh, groundSize, groundPosition }) {
+export default function GroundReflector({
+    groundMesh,
+    groundSize,
+    groundPosition,
+}) {
     const {
         color,
         blurWidth,
@@ -11,55 +15,66 @@ export default function GroundReflector({ groundMesh, groundSize, groundPosition
         mixStrength,
         mirror,
         opacity,
-    } = useControls("Ground", {
-        GroundReflection: folder({
-            color: "#281a10",
-            blurWidth: {
-                value: 100,
-                min: 0,
-                max: 500,
-                step: 10,
-            },
-            blurHeight: {
-                value: 50,
-                min: 0,
-                max: 500,
-                step: 10,
-            },
-            roughness: {
-                value: 0.77,
-                min: 0,
-                max: 1,
-                step: 0.01,
-            },
-            mixBlur: {
-                value: 1,
-                min: 0,
-                max: 1,
-                step: 0.01,
-            },
-            mixStrength: {
-                value: 60,
-                min: 0,
-                max: 100,
-                step: 0.1,
-            },
-            mirror: {
-                value: 0,
-                min: 0,
-                max: 1,
-                step: 0.01,
-            },
-            opacity: {
-                value: 0.25,
-                min: 0,
-                max: 1,
-                step: 0.01,
-            },
-        }),
-    });
+    } = useControls(
+        "Ground",
+        {
+            GroundReflection: folder({
+                color: "#281a10",
+                blurWidth: {
+                    value: 100,
+                    min: 0,
+                    max: 500,
+                    step: 10,
+                },
+                blurHeight: {
+                    value: 50,
+                    min: 0,
+                    max: 500,
+                    step: 10,
+                },
+                roughness: {
+                    value: 0.77,
+                    min: 0,
+                    max: 1,
+                    step: 0.01,
+                },
+                mixBlur: {
+                    value: 1,
+                    min: 0,
+                    max: 1,
+                    step: 0.01,
+                },
+                mixStrength: {
+                    value: 60,
+                    min: 0,
+                    max: 100,
+                    step: 0.1,
+                },
+                mirror: {
+                    value: 0,
+                    min: 0,
+                    max: 1,
+                    step: 0.01,
+                },
+                opacity: {
+                    value: 0.25,
+                    min: 0,
+                    max: 1,
+                    step: 0.01,
+                },
+            }),
+        },
+        { collapsed: true }
+    );
     return (
-        <mesh rotation={[Math.PI * -0.5, 0, 0]} position={[groundPosition.x, groundPosition.y + 0.027, groundPosition.z]}>
+        <mesh
+            rotation={[Math.PI * -0.5, 0, 0]}
+            position={[
+                groundPosition.x,
+                groundPosition.y + 0.027,
+                groundPosition.z,
+            ]}
+        >
             <planeGeometry args={[groundSize.x, groundSize.z]} />
             <MeshReflectorMaterial
                 color={color}

@@ -11,8 +11,8 @@ root.render(
     <Canvas
         shadows
         onCreated={({ gl }) => {
-            gl.toneMapping = THREE. NeutralToneMapping;
-            gl.toneMappingExposure = 1.5;
+            gl.toneMapping = THREE.NeutralToneMapping;
+            gl.toneMappingExposure = 1.4;
         }}
     >
         <color args={["#2c3b5f"]} attach="background" />
